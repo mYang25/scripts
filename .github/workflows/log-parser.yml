@@ -1,0 +1,24 @@
+
+name: Run Log Parser
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  parse-logs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run log parser
+        run: python log_parser.py logs/sample.log
